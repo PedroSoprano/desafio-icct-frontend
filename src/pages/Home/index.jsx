@@ -42,13 +42,6 @@ export const Home = () => {
 
     const navigate = useNavigate()
 
-    const handleStorageChange = () => {
-        localStorage.removeItem("@token")
-        navigate("/")
-        toast.error("Token violado")
-    }
-
-    window.addEventListener('storage', handleStorageChange);
 
     const handleAtt = () => {
         setAttReq(attReq + 1)
