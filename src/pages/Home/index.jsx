@@ -63,7 +63,9 @@ export const Home = () => {
     const handleCloseModalEdit = () => {
         setIsEdit(false)
         setLivroId("")
+        reset()
         setOpenModalEdit(false)
+        setLivro()
     }
 
     const [optionsSearch] = useState([
@@ -339,7 +341,7 @@ export const Home = () => {
                                 Editar livro
                             </Typography>
                         </Box>
-                        <Box sx={{ display: "flex", flexDirection: "column", gap: "30px" }}>
+                        {livro && <Box sx={{ display: "flex", flexDirection: "column", gap: "30px" }}>
                             <TextField
                                 label={errors.nome?.message ?? "Nome"}
                                 {...register("nome")}
@@ -436,7 +438,8 @@ export const Home = () => {
                                 {...register}
                                 sx={errors.numEdicao?.message ? inputError : input}
                             />
-                        </Box>
+                        </Box>}
+
                         <Box sx={windowWidth < winSize ? { marginTop: "40px", display: "flex", gap: "20px", flexDirection: "column", width: "100%" } : { marginTop: "40px", display: "flex", justifyContent: "end", gap: "20px" }}>
                             <Button variant='contained' onClick={handleCloseModalEdit} sx={{ backgroundColor: colors.primary_light, color: colors.primary_base, fontWeight: 700, "&:hover": { backgroundColor: colors.neutral_base } }}>Cancelar</Button>
                             <Button variant='contained' type='submit' sx={windowWidth < winSize ? buttonMobile : button} >{"Editar"}</Button>
